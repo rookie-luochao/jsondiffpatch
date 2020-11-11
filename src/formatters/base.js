@@ -39,7 +39,7 @@ const arrayKeyComparer = (key1, key2) =>
 class BaseFormatter {
   format(delta, left, translationConfigMap) {
     const context = {};
-    this.translationConfigMap = translationConfigMap || {};
+    this.translationConfigMap = translationConfigMap;
     
     this.prepareContext(context);
     this.recurse(context, delta, left);
