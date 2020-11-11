@@ -37,8 +37,10 @@ const arrayKeyComparer = (key1, key2) =>
   arrayKeyToSortNumber(key1) - arrayKeyToSortNumber(key2);
 
 class BaseFormatter {
-  format(delta, left) {
+  format(delta, left, translationConfigMap) {
     const context = {};
+    this.translationConfigMap = translationConfigMap || {};
+    
     this.prepareContext(context);
     this.recurse(context, delta, left);
     return this.finalize(context);
