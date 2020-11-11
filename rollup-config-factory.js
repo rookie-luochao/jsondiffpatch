@@ -100,6 +100,7 @@ export function createModuleBuild(dirName = 'dist', includeCoverage = false) {
   }
   if (dirName === 'dist') {
     plugins.push(copySrcFileToDist('index.d.ts'));
+    plugins.push(copySrcFileToDist('empty.js'));
     plugins.push(copyDocsFileToDist('formatters-styles/annotated.css'));
     plugins.push(copyDocsFileToDist('formatters-styles/html.css'));
   }
