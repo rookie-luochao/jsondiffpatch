@@ -62,7 +62,7 @@ class HtmlFormatter extends BaseFormatter {
   nodeBegin(context, key, leftKey, type, nodeType) {
     let newLeftKey = leftKey;
     if (this.translationConfigMap && Object.prototype.toString.call(this.translationConfigMap) === '[object Object]') {
-      newLeftKey = this.translationConfigMap[leftKey];
+      newLeftKey = this.translationConfigMap[leftKey] || leftKey;
     }
 
     let nodeClass = `jsondiffpatch-${type}${
