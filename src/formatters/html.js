@@ -60,12 +60,15 @@ class HtmlFormatter extends BaseFormatter {
   }
 
   nodeBegin(context, key, leftKey, type, nodeType) {
+    console.log('000011112222', this.translationConfigMap);
+    const newLeftKey = this.translationConfigMap[leftKey] || leftKey;
+
     let nodeClass = `jsondiffpatch-${type}${
       nodeType ? ` jsondiffpatch-child-node-type-${nodeType}` : ''
     }`;
     context.out(
       `<li class="${nodeClass}" data-key="${leftKey}">` +
-        `<div class="jsondiffpatch-property-name">${leftKey}</div>`
+        `<div class="jsondiffpatch-property-name">${newLeftKey}</div>`
     );
   }
 
@@ -292,9 +295,9 @@ export default HtmlFormatter;
 
 let defaultInstance;
 
-export function format(delta, left) {
+export function format(delta, left, translationConfigMap) {
   if (!defaultInstance) {
     defaultInstance = new HtmlFormatter();
   }
-  return defaultInstance.format(delta, left);
+  return defaultInstance.format(delta, left, translationConfigMap);
 }
