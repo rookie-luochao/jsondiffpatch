@@ -1,5 +1,5 @@
 export interface Formatter {
-    format(delta: Delta, original: any, translationConfigMap: { [k in string]:  string }): string;
+    format(delta: Delta, original: any, translationConfigMap?: { [k in string]:  string }): string;
 }
 
 export interface HtmlFormatter extends Formatter {
